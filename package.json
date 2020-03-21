@@ -4,7 +4,7 @@
   "description": "",
   "main": "dist/app.js",
   "scripts": {
-    "prebuild": "tslint -c tslint.json -p tsconfig.json --fix",
+    "predebug": "tslint -c tslint.json -p tsconfig.json --fix",
     "build": "tsc",
     "build:live": "nodemon --watch '*.ts' --exec 'ts-node' src/app.ts",
     "prestart": "npm run build",
