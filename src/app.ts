@@ -16,6 +16,7 @@ import ConditionRepository from "./repositories/conditionRepository";
 
 dotenv.config();
 const app = express();
+
 async function configureContainer() {
   const container = createContainer();
 
