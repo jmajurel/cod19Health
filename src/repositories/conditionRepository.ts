@@ -7,6 +7,12 @@ class ConditionRepository implements IConditionRepository {
   constructor({ dbClient }: { dbClient: Db }) {
     this.dbClient = dbClient;
   }
+  async getAll(): Promise<Condition[]> {
+    return await (this.dbClient
+      .collection("conditions")
+      .find({})
+      .toArray() as Promise<Condition[]>);
+  }
 
   async getById(id: string): Promise<Condition> {
     return await this.dbClient

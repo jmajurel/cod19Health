@@ -12,9 +12,13 @@ export default class ConditionAPI {
   }) {
     this._conditionService = conditionService;
   }
+  @GET()
+  async getAll(req: Request, res: Response) {
+    res.status(200).json(await this._conditionService.getAll());
+  }
   @route("/:id")
   @GET()
-  async getConditions(req: Request, res: Response) {
+  async getById(req: Request, res: Response) {
     res.status(200).json(await this._conditionService.getById(req.params.id));
   }
 }

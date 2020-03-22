@@ -11,6 +11,9 @@ class ConditionService implements IConditionServiceInterface {
   }) {
     this.conditionRepository = conditionRepository;
   }
+  async getAll(): Promise<Condition[]> {
+    return await this.conditionRepository.getAll();
+  }
 
   async getById(id: string): Promise<Condition> {
     return await this.conditionRepository.getById(id);
