@@ -16,13 +16,18 @@ import ConditionRepository from "./repositories/conditionRepository";
 
 dotenv.config();
 const app = express();
+let connectionString = process.env.DB_CONNECTION_STRING;
+
+connectionString = connectionString
+  .replace("<dbuser>", process.env.DB_USER)
+  .replace("<dbpassword>", process.env.DB_PWD);
 
 async function configureContainer() {
   const container = createContainer();
 
-  const dbConnection = (
-    await MongoClient.connect(process.env.DB_CONNECTION_STRING)
-  ).db(process.env.DB_NAME);
+  const dbConnection = (await MongoClient.connect(connectionString)).db(
+    process.env.DB_NAME
+  );
   container.register({
     conditionService: asClass(ConditionService).scoped(),
     conditionRepository: asClass(ConditionRepository).scoped(),
