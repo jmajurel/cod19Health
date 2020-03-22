@@ -1,5 +1,5 @@
-import { MongoClient, Db } from "mongodb";
-import { MongoMemoryServer } from "mongodb-memory-server";
+const { MongoClient } = require("mongodb");
+const { MongoMemoryServer } = require("mongodb-memory-server");
 
 /**
  * Connect to the in-memory database.
@@ -8,25 +8,23 @@ const connect = async () => {
   const mongod = new MongoMemoryServer();
 
   const uri = await mongod.getConnectionString();
-  const dbName = await mongod.getDbName();
+  console.log("uri: " + uri);
 
+  const dbName = await mongod.getDbName();
+  console.log("dbName :" + dbName);
   const mongooseOpts = {
     useNewUrlParser: true
   };
   console.log(uri, dbName);
-  const dbClient: MongoClient = await MongoClient.connect(uri, mongooseOpts);
-  const db: Db = dbClient.db(dbName);
-  return { dbClient, db, mongod };
+  const dbClient = await MongoClient.connect(uri, mongooseOpts);
+  const db = dbClient.db(dbName);
+  return db;
 };
 
 /**
  * Drop database, close the connection and stop mongod.
  */
-const closeDatabase = async (
-  dbClient: MongoClient,
-  db: Db,
-  mongod: MongoMemoryServer
-) => {
+const closeDatabase = async (dbClient, db, mongod) => {
   console.log(dbClient, db, mongod);
   await db.dropDatabase();
   await dbClient.close();
@@ -45,4 +43,4 @@ const closeDatabase = async (
   }
 };*/
 
-export { connect, closeDatabase };
+module.exports = { connect, closeDatabase };

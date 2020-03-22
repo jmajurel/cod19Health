@@ -21,4 +21,9 @@ export default class ConditionAPI {
   async getById(req: Request, res: Response) {
     res.status(200).json(await this._conditionService.getById(req.params.id));
   }
+
+  @POST()
+  async create(req: Request, res: Response) {
+    res.status(201).json();
+  }
 }
