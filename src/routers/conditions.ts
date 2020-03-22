@@ -15,6 +15,6 @@ export default class ConditionAPI {
   @route("/:id")
   @GET()
   async getConditions(req: Request, res: Response) {
-    res.send(await this._conditionService.getById(req.params.id));
+    res.status(200).json(await this._conditionService.getById(req.params.id));
   }
 }

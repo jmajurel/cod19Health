@@ -1,6 +1,6 @@
 import IConditionRepository from "./interfaces/conditionRepoInterface";
 import Condition from "../models/condition";
-import { Db } from "mongodb";
+import { Db, ObjectID as ObjectId } from "mongodb";
 
 class ConditionRepository implements IConditionRepository {
   private readonly dbClient: Db = null;
@@ -9,8 +9,9 @@ class ConditionRepository implements IConditionRepository {
   }
 
   async getById(id: string): Promise<Condition> {
-    console.dir(this.dbClient);
-    return await this.dbClient.collection("conditions").findOne({ _id: id });
+    return await this.dbClient
+      .collection("conditions")
+      .findOne({ _id: new ObjectId(id) });
   }
 
   async delete(id: string): Promise<void> {

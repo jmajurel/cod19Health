@@ -1,4 +1,4 @@
 export default class Condition {
-  id: object;
+  _id: object;
   name: string;
 }

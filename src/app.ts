@@ -16,24 +16,28 @@ import ConditionRepository from "./repositories/conditionRepository";
 
 dotenv.config();
 const app = express();
+async function configureContainer() {
+  const container = createContainer();
 
-const container = createContainer();
-container.register({
-  conditionService: asClass(ConditionService).scoped(),
-  conditionRepository: asClass(ConditionRepository).scoped(),
-  dbClient: asFunction(createConnection).singleton()
-});
-app.use(scopePerRequest(container));
-console.log(process.env.DB_CONNECTION_STRING, process.env.DB_NAME);
-async function createConnection(): Promise<Db> {
-  return (await MongoClient.connect(process.env.DB_CONNECTION_STRING)).db(
-    process.env.DB_NAME
-  );
+  const dbConnection = (
+    await MongoClient.connect(process.env.DB_CONNECTION_STRING)
+  ).db(process.env.DB_NAME);
+  container.register({
+    conditionService: asClass(ConditionService).scoped(),
+    conditionRepository: asClass(ConditionRepository).scoped(),
+    dbClient: asValue(dbConnection)
+  });
+
+  return container;
 }
 
-app.use(loadControllers("routers/*.ts", { cwd: __dirname }));
-const PORT = process.env.PORT || 8081;
+configureContainer().then(container => {
+  app.use(scopePerRequest(container));
 
-app.listen(PORT, () => {
-  console.log("cod19Health is listenning on port: ", PORT);
+  app.use(loadControllers("routers/*.ts", { cwd: __dirname }));
+  const PORT = process.env.PORT || 8081;
+
+  app.listen(PORT, () => {
+    console.log("cod19Health is listenning on port: ", PORT);
+  });
 });
