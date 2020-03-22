@@ -1,4 +1,7 @@
 export default class Symptom {
-  id: object;
+  _id: object;
   name: string;
+  constructor({ name }: { name: string }) {
+    this.name = name;
+  }
 }
