@@ -4,7 +4,11 @@ import ISymptomRepository from "../repositories/interfaces/symptomRepoInterface"
 
 class SymptomService implements ISymptomService {
   private readonly symptomRepository: ISymptomRepository;
-  constructor(symptomRepository: ISymptomRepository) {
+  constructor({
+    symptomRepository
+  }: {
+    symptomRepository: ISymptomRepository;
+  }) {
     this.symptomRepository = symptomRepository;
   }
   async getAll(): Promise<Symptom[]> {

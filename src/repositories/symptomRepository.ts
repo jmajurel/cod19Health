@@ -4,7 +4,7 @@ import Symptom from "../models/symptom";
 
 class SymptomRepository implements ISymptomRepository {
   private readonly dbClient: Db;
-  constructor(dbClient: Db) {
+  constructor({ dbClient }: { dbClient: Db }) {
     this.dbClient = dbClient;
   }
   async getAll(): Promise<Symptom[]> {

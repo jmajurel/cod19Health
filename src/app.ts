@@ -13,6 +13,8 @@ import { MongoClient, Db } from "mongodb";
 import dotenv from "dotenv";
 import ConditionService from "./services/conditionService";
 import ConditionRepository from "./repositories/conditionRepository";
+import SymptomService from "./services/symptomService";
+import SymptomRepository from "./repositories/symptomRepository";
 
 dotenv.config();
 const app = express();
@@ -30,7 +32,9 @@ async function configureContainer() {
   );
   container.register({
     conditionService: asClass(ConditionService).scoped(),
+    symptomService: asClass(SymptomService).scoped(),
     conditionRepository: asClass(ConditionRepository).scoped(),
+    symptomRepository: asClass(SymptomRepository).scoped(),
     dbClient: asValue(dbConnection)
   });
 
