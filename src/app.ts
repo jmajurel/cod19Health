@@ -7,7 +7,7 @@ import {
   asFunction
 } from "awilix";
 import { loadControllers, scopePerRequest } from "awilix-express";
-
+import cors from "cors";
 import { MongoClient, Db } from "mongodb";
 
 import dotenv from "dotenv";
@@ -18,6 +18,7 @@ import SymptomRepository from "./repositories/symptomRepository";
 
 dotenv.config();
 const app = express();
+app.use(cors());
 let connectionString = process.env.DB_CONNECTION_STRING;
 
 connectionString = connectionString
