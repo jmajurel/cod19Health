@@ -1,0 +1,17 @@
+#!/bin/bash
+API_URL="https://cod19-health-dev.herokuapp.com/conditions"
+
+http POST $API_URL name="Pregnancy"
+http POST $API_URL name="Obesity"
+http POST $API_URL name="Cancer"
+http POST $API_URL name="Diabetes"
+http POST $API_URL name="HIV/other immune deficiency"
+http POST $API_URL name="Heart disease"
+http POST $API_URL name="Asthma (requiring medication)"
+http POST $API_URL name="Chronic lung disease (non-asthma)"
+http POST $API_URL name="Chronic liver disease"
+http POST $API_URL name="Chronic haematological disorder"
+http POST $API_URL name="Chronic kidney disease"
+http POST $API_URL name="Chronic neurological impairment/disease"
+http POST $API_URL name="Organ or bone marrow recipient"
+http POST $API_URL name="Other pre-existing condition(s)"
