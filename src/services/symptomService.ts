@@ -11,6 +11,7 @@ class SymptomService implements ISymptomService {
   }) {
     this.symptomRepository = symptomRepository;
   }
+
   async getAll(): Promise<Symptom[]> {
     return await this.symptomRepository.getAll();
   }
@@ -19,6 +20,9 @@ class SymptomService implements ISymptomService {
   }
   async create(newSymptom: Symptom): Promise<Symptom> {
     return await this.symptomRepository.create(newSymptom);
+  }
+  async update(id: string, updatedSymptom: Symptom): Promise<void> {
+    return await this.symptomRepository.update(id, updatedSymptom);
   }
   async delete(id: string): Promise<void> {
     return await this.symptomRepository.delete(id);

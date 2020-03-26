@@ -1,4 +1,4 @@
-import { route, GET, POST, before, DELETE } from "awilix-express";
+import { route, GET, POST, before, DELETE, PUT } from "awilix-express";
 import ISymptomService from "../services/interfaces/symptomSInterface";
 import { Request, Response } from "express";
 import bodyParser from "body-parser";
@@ -26,6 +26,17 @@ export default class SymptomAPI {
     res
       .status(201)
       .json(await this._symptomService.create(new Symptom({ ...req.body })));
+  }
+
+  @route("/:id")
+  @PUT()
+  @before([bodyParser()])
+  async update(req: Request, res: Response) {
+    await this._symptomService.update(
+      req.params.id,
+      new Symptom({ ...req.body })
+    );
+    res.status(200).json();
   }
 
   @route("/:id")

@@ -1,5 +1,10 @@
 import ISymptomRepository from "./interfaces/symptomRepoInterface";
-import { Db, InsertOneWriteOpResult, ObjectId } from "mongodb";
+import {
+  Db,
+  InsertOneWriteOpResult,
+  ObjectId,
+  UpdateWriteOpResult
+} from "mongodb";
 import Symptom from "../models/symptom";
 
 class SymptomRepository implements ISymptomRepository {
@@ -7,6 +12,7 @@ class SymptomRepository implements ISymptomRepository {
   constructor({ dbClient }: { dbClient: Db }) {
     this.dbClient = dbClient;
   }
+
   async getAll(): Promise<Symptom[]> {
     return await (this.dbClient
       .collection("symptoms")
@@ -26,6 +32,14 @@ class SymptomRepository implements ISymptomRepository {
         (result: InsertOneWriteOpResult<Symptom>): Symptom => result.ops[0]
       );
   }
+
+  async update(id: string, updatedSymptom: Symptom): Promise<void> {
+    return await this.dbClient
+      .collection("symptoms")
+      .updateOne({ _id: new ObjectId(id) }, { $set: { ...updatedSymptom } })
+      .then();
+  }
+
   async delete(id: string): Promise<void> {
     await this.dbClient
       .collection("symptoms")
