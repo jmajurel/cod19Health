@@ -1,4 +1,4 @@
-import { route, GET, POST, before, DELETE } from "awilix-express";
+import { route, GET, POST, before, DELETE, PUT } from "awilix-express";
 import IConditionSInterface from "../services/interfaces/conditionSInterface";
 import { Request, Response } from "express";
 import bodyParser from "body-parser";
@@ -32,6 +32,17 @@ export default class ConditionAPI {
       .json(
         await this._conditionService.create(new Condition({ ...req.body }))
       );
+  }
+
+  @route("/:id")
+  @PUT()
+  @before([bodyParser()])
+  async update(req: Request, res: Response) {
+    await this._conditionService.update(
+      req.params.id,
+      new Condition({ ...req.body })
+    );
+    res.status(200).json();
   }
 
   @route("/:id")

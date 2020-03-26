@@ -15,6 +15,11 @@ class ConditionService implements IConditionServiceInterface {
   async create(newCondition: Condition): Promise<Condition> {
     return await this.conditionRepository.create(newCondition);
   }
+
+  async update(id: string, updatedCondition: Condition): Promise<void> {
+    return await this.conditionRepository.update(id, updatedCondition);
+  }
+
   async getAll(): Promise<Condition[]> {
     return await this.conditionRepository.getAll();
   }

@@ -8,6 +8,7 @@ class ConditionRepository implements IConditionRepository {
   constructor({ dbClient }: { dbClient: Db }) {
     this.dbClient = dbClient;
   }
+
   async create(newCondition: Condition): Promise<Condition> {
     return await this.dbClient
       .collection("conditions")
@@ -16,6 +17,14 @@ class ConditionRepository implements IConditionRepository {
         (result: InsertOneWriteOpResult<Condition>): Condition => result.ops[0]
       );
   }
+
+  async update(id: string, updatedCondition: Condition): Promise<void> {
+    return await this.dbClient
+      .collection("conditions")
+      .updateOne({ _id: new ObjectId(id) }, { $set: { ...updatedCondition } })
+      .then();
+  }
+
   async getAll(): Promise<Condition[]> {
     return await (this.dbClient
       .collection("conditions")
