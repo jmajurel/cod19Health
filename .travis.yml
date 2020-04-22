@@ -5,3 +5,9 @@ script:
   - npm run test
 after_script:
   - cat ./coverage/lcov.info | coveralls
+deploy:
+  provider: heroku
+  api_key: 53d90db4-5da1-4731-8c60-6b287d037400
+  app:
+    develop: cod19-health-dev
+    master: cod19-health
