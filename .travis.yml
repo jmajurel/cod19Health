@@ -1,14 +1,14 @@
 language: node_js
 node_js:
-  - 12.16.2
+- 12.16.2
 script:
-  - npm run test
+- npm run test
 after_script:
-  - cat ./coverage/lcov.info | coveralls
+- cat ./coverage/lcov.info | coveralls
 deploy:
   provider: heroku
   api_key:
-    secure: KK2IsftHPatkHu8X5QKq17oN4vGHSQTjmggOVO2WMXHYAz7q7SyWZk5eiBaHHR3ypbUljT2efqFbsekGJNl5LGwy15fmQBsaigDf5NN+YuTCWMO/KsMVmvyNam19hP/wAQkwlcYGZnSKCPP6mSfz9Zyi8hAvayUsNPr0W/QIqtE/quzkIPe3IqnLEcHgCl2SHsDg+OFr5nrgiPsx8j5QkLeWKCzCI5pT/4TZZ2d153ZhZ8aCKoAqGAWrETEdVaKmYhYAUIwRa60jyHtdV7+FUgyzCBsoX7zjYbLUU5g9fGZo6irF5FdyKuU8aelPJnl/LbCgt1U3tOaZtThe5Jl36hl6L18GVOZoU5YeRLXf/XzQv/w6yC2RTneyE2JlKAsjJBz46E39yLChc8M/CbCggpzt33rgdJadnUUmo+Focy8ZcacTAK8l007Pfu/nrvAbLEy8mNfigOz76Ed08EMG98a1ce5+s18RAvLgAKTqFpmf4/xHFGoORIS2MFxrSUcx8U34SLPc1h39fQmzvGTvX7u4KgTE4dEvDvnaf26WV1esYfjyy++krpHXu4b+X+isvHTriwyTPr62QXmJi7zYmrg6e3OtQJStJM1aztuidUF/2fwwbjwW4DsruOg+dzj8KVckADR/ga9cdAhijpZLWZjLcZbrXhcpXmq3QBNXZq0=
+    secure: EDdTf58cYThvGrkt3M5syTdQTjpMb+H3zSabkHGOc2cD3Flg9A91YrbdbINn4Jx4FbZzuwS9scXJz9zLQtM9O2/51aG6dtQ7qder6yqM0BI5IAfMfB4TfttEnXna+cExpnmzqkYH22rs2fkQv97jNedBSqXdVUHyizAxNlgIl69DZupJKfmT3lCdySu4Na53K0gMPdiA/CWCvqdT9+eGGyhG9V9Zs2Y0pmUolwbh544R/rhQmBHue1ml94vEcRzUsjDc9+Rzz3gCEtB/GqK2NwrtiD8x6kMBInFpEpI8SLoe787oFqimO7iZ6ofz85JMyHZ4Ux4xtrNWgUJ+R7tnQIxuONxvz26x/B3n2rkUlaDPG7h/cVphQka4T6AaX67jAwM/9XnhCf/8hySmrEPlVhKptEIIyheVZ/wbZl2NMoKx8i4I/qeMcPl/5LOwsySzP357moMClh4V9qchG86soFsz0jLD2HBGeZW6rIhvxCTGniRXncrNpG43Gz1FAiNRS6hf7pkAcvdH1vSWeb0udfGVU9SiPySw4wO9enc85GicERFicj9/r4hlRsN4p/2J/gE5hfFK2HyZB3kejoKTStIbuL28Ffyn1KUaQ9coviWqlm5HtsRBXKPgrbsc/As/cpIEiTCI0GL7ahxGv8cGeLQYvvHsEIofA/bl3ZOczq4=
   app: cod19Health
   on:
     repo: jmajurel/cod19Health
