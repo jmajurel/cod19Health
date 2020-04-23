@@ -1,13 +1,14 @@
 language: node_js
 node_js:
-  - 12.16.2
+- 12.16.2
 script:
-  - npm run test
+- npm run test
 after_script:
-  - cat ./coverage/lcov.info | coveralls
+- cat ./coverage/lcov.info | coveralls
 deploy:
   provider: heroku
-  api_key: 53d90db4-5da1-4731-8c60-6b287d037400
+  api_key:
+    secure: SLnsr1SPt4hrunSVAmxky5Lb7lw/eNvNDODeowM4fH9akLw/xXfz/TMRsuA1BAiFClsCGcpx0ssRlrVVfgOWP4MZS+Lmrw2lTYk5/hH3IGe/GLoWl/6D72a9c8de7jKeo26WvcER9fhkZ1aPTj6O+6Vp3UpMiSZWYtCMYq14Pskoyb/MeYGzBTrBpWnr1TYY3geZhFj2Tbxp5NMevOwOvqZQq4ULumsmrmpNLL2fxJ5JOEshDD69nHKh6Zjq7KocCGS4J81Kk1b+LjaUTFPkG3x2ZZzN9FGRG9Rrr/KUHlXrYZr8FX5L9djgBJ/RqxKofC+W8/32Kvf3y8URspLaeWPlFsCip3Nrg+yZOkZwwTEg9gs4juC9uQbFFBbQhwdR4Owp6DtaMLmv3VCchlFxx5UPMdNBeGNIDJW1Ru/ruRv3LSUHe1TJYpikdAdLKMKUK3jO8W37347N6VmawijfSRGRfRaeLtMKQVPqs1Bhv2CNnuFcRPTr13A9Hep4vhTsocO9nTgwm0R7e7TPc63qCqnicJZBR1vuAV18diZdOqVeo37wNEi7413tiUS16ruAuNuJSV7TfDR6wyOKvRmzHyK1Cy5O21GiRJYdTa+7D4SZNh2VCSYRkTLp1Ih4DY0T3ar02TBaQG368xKXS99+JCY3ZjedlA0PFemP7DfMrW0=
   app:
     develop: cod19-health-dev
     master: cod19-health
