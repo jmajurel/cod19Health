@@ -9,7 +9,9 @@ deploy:
   provider: heroku
   api_key:
     secure: KK2IsftHPatkHu8X5QKq17oN4vGHSQTjmggOVO2WMXHYAz7q7SyWZk5eiBaHHR3ypbUljT2efqFbsekGJNl5LGwy15fmQBsaigDf5NN+YuTCWMO/KsMVmvyNam19hP/wAQkwlcYGZnSKCPP6mSfz9Zyi8hAvayUsNPr0W/QIqtE/quzkIPe3IqnLEcHgCl2SHsDg+OFr5nrgiPsx8j5QkLeWKCzCI5pT/4TZZ2d153ZhZ8aCKoAqGAWrETEdVaKmYhYAUIwRa60jyHtdV7+FUgyzCBsoX7zjYbLUU5g9fGZo6irF5FdyKuU8aelPJnl/LbCgt1U3tOaZtThe5Jl36hl6L18GVOZoU5YeRLXf/XzQv/w6yC2RTneyE2JlKAsjJBz46E39yLChc8M/CbCggpzt33rgdJadnUUmo+Focy8ZcacTAK8l007Pfu/nrvAbLEy8mNfigOz76Ed08EMG98a1ce5+s18RAvLgAKTqFpmf4/xHFGoORIS2MFxrSUcx8U34SLPc1h39fQmzvGTvX7u4KgTE4dEvDvnaf26WV1esYfjyy++krpHXu4b+X+isvHTriwyTPr62QXmJi7zYmrg6e3OtQJStJM1aztuidUF/2fwwbjwW4DsruOg+dzj8KVckADR/ga9cdAhijpZLWZjLcZbrXhcpXmq3QBNXZq0=
-  develop: cod19-health-dev
-  master: cod19-health
+  app: cod19Health
+  on:
+    repo: jmajurel/cod19Health
+    branch: develop
 notifications:
   email: false
